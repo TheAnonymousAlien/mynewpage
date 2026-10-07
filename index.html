@@ -5,6 +5,42 @@
     <title>MyNewPage</title>
 </head>
 <body>
+    <div id="login-box">
+    <h2>Área Restringida del Sistema</h2>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="verificarLogin()">Iniciar Sesión</button>
+</div>
+
+<div id="contenido-secreto" style="display: none;">
+    <h2>🔓 ¡ACCESO CONCEDIDO! Bienvenidos a la base secreta de TheDEVAlien01.</h2>
+</div>
+
+<script>
+// ERROR DE LOGICAL: Esta variable controla el acceso y está expuesta en el navegador
+let usuarioLogueado = false; 
+
+function verificarLogin() {
+    let user = document.getElementById("usuario").value;
+    let pass = document.getElementById("password").value;
+
+    // Contraseña súper secreta hardcodeada (mala práctica)
+    if (user === "admin" && pass === "AlienSecret123!") {
+        usuarioLogueado = true;
+        mostrarContenido();
+    } else {
+        alert("❌ Credenciales incorrectas. Acceso denegado.");
+    }
+}
+
+function mostrarContenido() {
+    if (usuarioLogueado === true) {
+        document.getElementById("login-box").style.display = "none";
+        document.getElementById("contenido-secreto").style.display = "block";
+    }
+}
+</script>
+
     <h1>Soy The_Alien01</h1>
     <p>Todo esto lo he hecho yo solo a puro código.</p>
     <p>sigueme en pinterest https://es.pinterest.com/The_Alien01/_profile/</p>
